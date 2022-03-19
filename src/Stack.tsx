@@ -1,36 +1,34 @@
-/** @jsx jsx */
-import { jsx, Global } from "@emotion/core";
-import * as React from "react";
+import * as React from 'react'
 import {
   StackTitle as Title,
   Stack as OriginalStack,
   StackItem as OriginalStackItem,
   StackContext,
   StackProps,
-  StackItemProps
-} from "react-gesture-stack";
-import { Text } from "./Text";
-import { Button } from "./Button";
-import { IconChevronLeft } from "./Icons";
-import { useTheme } from "./Theme/Providers";
+  StackItemProps,
+} from './Lib/react-gesture-stack'
+import { Text } from './Text'
+import { Button } from './Button'
+import { IconChevronLeft } from './Icons'
+import { useTheme } from './Theme/Providers'
 
 export interface StackTitleProps {
   /** The pane title which is centered */
-  title?: React.ReactNode;
+  title?: React.ReactNode
   /** The title of the back button */
-  backTitle?: React.ReactNode;
+  backTitle?: React.ReactNode
   /** Content that appears to the left of the title */
-  contentBefore?: React.ReactNode;
+  contentBefore?: React.ReactNode
   /** Content that appears to the right of the title */
-  contentAfter?: React.ReactNode;
+  contentAfter?: React.ReactNode
 }
 
 export function StackTitle({
   title,
-  backTitle = "Back",
+  backTitle = 'Back',
   ...other
 }: StackTitleProps) {
-  const { index, changeIndex } = React.useContext(StackContext);
+  const { index, changeIndex } = React.useContext(StackContext)
 
   return (
     <Title
@@ -52,48 +50,48 @@ export function StackTitle({
       }
       {...other}
     />
-  );
+  )
 }
 
 export function Stack(props: StackProps) {
-  const theme = useTheme();
+  const theme = useTheme()
   return (
     <OriginalStack
       css={{
-        ".Stack__nav": {
+        '.Stack__nav': {
           background: theme.colors.background.tint1,
-          boxShadow: theme.shadows.xs
-        }
+          boxShadow: theme.shadows.xs,
+        },
       }}
       {...props}
     />
-  );
+  )
 }
 
 export function StackItem(props: StackItemProps) {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const dark = theme.colors.mode === "dark";
+  const dark = theme.colors.mode === 'dark'
 
   function generateShadow(x: number) {
     return dark
       ? `rgba(0, 0, 0, ${x}) 0px 0px 12px -2px`
-      : `rgba(160, 160, 160, ${x}) 0px 0px 12px -2px`;
+      : `rgba(160, 160, 160, ${x}) 0px 0px 12px -2px`
   }
 
   return (
     <OriginalStackItem
       generateShadow={generateShadow}
       style={{
-        background: undefined
+        background: undefined,
       }}
       css={{
         backgroundColor: theme.colors.background.default,
-        "& .StackItem__overlay": {
-          backgroundColor: theme.colors.background.tint1 + "!important"
-        }
+        '& .StackItem__overlay': {
+          backgroundColor: theme.colors.background.tint1 + '!important',
+        },
       }}
       {...props}
     />
-  );
+  )
 }
