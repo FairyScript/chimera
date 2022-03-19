@@ -6,7 +6,13 @@ import { useFocusElement } from './Hooks/use-focus-trap'
 import PropTypes from 'prop-types'
 import useScrollLock from './Lib/use-scroll-lock'
 import { useTheme } from './Theme/Providers'
-import { HTMLAttributes, ReactNode, FunctionComponent, useRef, Fragment } from 'react'
+import {
+  HTMLAttributes,
+  ReactNode,
+  FunctionComponent,
+  useRef,
+  Fragment,
+} from 'react'
 
 export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
   /** Whether the dialog is showing */
@@ -35,7 +41,7 @@ export const Dialog: FunctionComponent<DialogProps> = ({
   ...other
 }) => {
   const theme = useTheme()
-  const transitions = useTransition(isOpen, null, {
+  const transitions = useTransition(isOpen, {
     from: { opacity: 0, transform: 'scale(0.9)' },
     enter: { opacity: 1, transform: 'scale(1)' },
     leave: { opacity: 0, transform: 'scale(0.9)' },
@@ -52,16 +58,15 @@ export const Dialog: FunctionComponent<DialogProps> = ({
     <Fragment>
       <Overlay onRequestClose={onRequestClose} isOpen={isOpen}>
         <Fragment>
-          {transitions.map(
-            ({ item, key, props: animationProps }) =>
+          {transitions(
+            (animationProps, item) =>
               item && (
                 <animated.div
-                  key={key}
                   className="Dialog"
                   aria-modal="true"
                   ref={ref}
                   tabIndex={-1}
-                  onClick={(e: MouseEvent) => {
+                  onClick={e => {
                     e.stopPropagation()
                   }}
                   style={
