@@ -1,7 +1,7 @@
 {
-  "name": "chimera",
+  "name": "chimera-ui",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.6",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,18 +10,19 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/chimera.umd.js",
-  "module": "./dist/chimera.es.js",
+  "main": "./dist/chimera-ui.umd.js",
+  "module": "./dist/chimera-ui.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/chimera.es.js",
-      "require": "./dist/chimera.umd.js"
+      "import": "./dist/chimera-ui.es.js",
+      "require": "./dist/chimera-ui.umd.js"
     }
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@popperjs/core": "^2.11.4",
     "@reach/alert": "^0.16.0",
     "@reach/skip-nav": "^0.16.0",
     "@reach/visually-hidden": "^0.16.0",

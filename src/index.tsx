@@ -39,7 +39,8 @@ export * from './ScrollView'
 export * from './AlertDialog'
 export * from './Skeleton'
 export * from './Stack'
-export * from './ComboBox'
+//ComboBox的Popper需要重构,先删掉
+//export * from './ComboBox'
 
 // Theme stuff
 export * from './Theme'
