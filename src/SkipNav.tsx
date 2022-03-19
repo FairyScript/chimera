@@ -1,55 +1,53 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
-import * as React from "react";
-import PropTypes from "prop-types";
+import * as React from 'react'
+import PropTypes from 'prop-types'
 import {
   SkipNavLink as ReachSkipNavLink,
   SkipNavContent as ReachSkipNavContent,
-  ISkipNavProps
-} from "@reach/skip-nav";
-import { Text } from "./Text";
-import { useTheme } from "./Theme/Providers";
+  SkipNavLinkProps
+} from '@reach/skip-nav'
+import { Text } from './Text'
+import { useTheme } from './Theme/Providers'
 
-export const SkipNavLink: React.FunctionComponent<ISkipNavProps> = ({
-  children = "Skip to content",
+export const SkipNavLink: React.FC<SkipNavLinkProps> = ({
+  children = 'Skip to content',
   ...other
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
   return (
     <ReachSkipNavLink
       css={{
         border: 0,
-        clip: "rect(0 0 0 0)",
-        height: "1px",
-        margin: "-1px",
-        overflow: "hidden",
+        clip: 'rect(0 0 0 0)',
+        height: '1px',
+        margin: '-1px',
+        overflow: 'hidden',
         padding: 0,
-        position: "absolute",
+        position: 'absolute',
         color: theme.colors.text.default,
-        textDecoration: "none",
-        width: "1px",
-        ":focus": {
+        textDecoration: 'none',
+        width: '1px',
+        ':focus': {
           background: theme.colors.background.layer,
-          clip: "auto",
-          height: "auto",
+          clip: 'auto',
+          height: 'auto',
           left: theme.spaces.md,
           top: theme.spaces.md,
-          position: "fixed",
+          position: 'fixed',
           zIndex: 40,
-          width: "auto",
+          width: 'auto',
           padding: theme.spaces.md,
-          borderRadius: theme.radii.md
-        }
+          borderRadius: theme.radii.md,
+        },
       }}
       {...other}
     >
       <Text>{children}</Text>
     </ReachSkipNavLink>
-  );
-};
+  )
+}
 
 SkipNavLink.propTypes = {
-  children: PropTypes.node
-};
+  children: PropTypes.node,
+}
 
-export const SkipNavContent = ReachSkipNavContent;
+export const SkipNavContent = ReachSkipNavContent

@@ -1,6 +1,6 @@
-import Pager, { PagerProps } from "react-page-controller";
+import Pager, { PagerProps } from './Lib/react-page-controller'
 
-export * from "react-page-controller";
-export { Pager };
+export * from './Lib/react-page-controller'
+export { Pager }
 
-export const GestureView: React.FunctionComponent<PagerProps> = Pager;
+export const GestureView: React.FunctionComponent<PagerProps> = Pager

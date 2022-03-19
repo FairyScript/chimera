@@ -1,9 +1,7 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
 import * as React from "react";
-import { useGestureResponder } from "react-gesture-responder";
+import { useGestureResponder } from "./Lib/react-gesture-responder";
 import { getDirection } from "./Sheet";
-import { useSpring, SpringConfig } from "react-spring";
+import { useSpring, SpringConfig } from "@react-spring/web";
 import PropTypes from "prop-types";
 import { safeBind } from "./Hooks/compose-bind";
 
@@ -136,16 +134,5 @@ const ScrollViewForward: React.RefForwardingComponent<
       </div>
     );
   };
-
-ScrollViewForward.propTypes = {
-  overflowY: PropTypes.number,
-  children: PropTypes.node,
-  overflowX: PropTypes.number,
-  scrollAnimationConfig: PropTypes.shape({
-    tension: PropTypes.number,
-    mass: PropTypes.number,
-    friction: PropTypes.number
-  })
-};
 
 export const ScrollView = React.forwardRef(ScrollViewForward);

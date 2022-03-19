@@ -1,80 +1,74 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
-import * as React from "react";
-import { animated, useTransition } from "react-spring";
-import { Portal } from "./Portal";
-import { useHideBody } from "./Hooks/hide-body";
-import PropTypes from "prop-types";
-import { useTheme } from "./Theme/Providers";
+import * as React from 'react'
+import { animated, useTransition } from '@react-spring/web'
+import { Portal } from './Portal'
+import { useHideBody } from './Hooks/hide-body'
+import PropTypes from 'prop-types'
+import { useTheme } from './Theme/Providers'
 
 export interface OverlayProps {
   /** Whether the overlay is open */
-  isOpen: boolean;
+  isOpen: boolean
   /** Whatever you'd like to appear on top */
-  children: React.ReactNode;
+  children: React.ReactNode
   /** Callback to handle closing the overlay */
-  onRequestClose: () => void;
+  onRequestClose: () => void
 }
 
-export const Overlay: React.RefForwardingComponent<
-  React.Ref<HTMLDivElement>,
-  OverlayProps
-> = React.forwardRef(
+export const Overlay = React.forwardRef(
   (
     { isOpen, onRequestClose, children }: OverlayProps,
     ref: React.Ref<HTMLDivElement>
   ) => {
-    const theme = useTheme();
-    const transitions = useTransition(isOpen, null, {
+    const theme = useTheme()
+    const transitions = useTransition(isOpen, {
       from: { opacity: 0 },
       enter: { opacity: 1 },
-      leave: { opacity: 0 }
-    });
+      leave: { opacity: 0 },
+    })
 
-    const { bind } = useHideBody(isOpen);
+    const { bind } = useHideBody(isOpen)
 
     return (
       <Portal>
-        {transitions.map(
-          ({ item, key, props }) =>
+        {transitions(
+        (style, item) =>
             item && (
               <div
-                key={key}
-                ref={ref}
                 {...bind}
+                ref={ref}
                 onClick={(e: React.MouseEvent) => {
-                  e.stopPropagation();
-                  onRequestClose();
+                  e.stopPropagation()
+                  onRequestClose()
                 }}
                 onKeyDown={(e: React.KeyboardEvent) => {
-                  if (e.key === "Escape") {
-                    e.stopPropagation();
-                    onRequestClose();
+                  if (e.key === 'Escape') {
+                    e.stopPropagation()
+                    onRequestClose()
                   }
                 }}
                 css={{
                   bottom: 0,
                   left: 0,
-                  overflow: "auto",
-                  width: "100vw",
-                  height: "100vh",
+                  overflow: 'auto',
+                  width: '100vw',
+                  height: '100vh',
                   zIndex: theme.zIndices.overlay,
-                  position: "fixed",
+                  position: 'fixed',
                   content: "''",
                   right: 0,
                   top: 0,
-                  WebkitTapHighlightColor: "transparent"
+                  WebkitTapHighlightColor: 'transparent',
                 }}
               >
                 <animated.div
-                  style={{ opacity: props.opacity }}
+                  style={{ opacity: style.opacity }}
                   css={{
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: theme.colors.background.overlay
+                    background: theme.colors.background.overlay,
                   }}
                 />
 
@@ -83,14 +77,14 @@ export const Overlay: React.RefForwardingComponent<
             )
         )}
       </Portal>
-    );
+    )
   }
-);
+)
 
-Overlay.displayName = "Overlay";
+Overlay.displayName = 'Overlay'
 
 Overlay.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
-  children: PropTypes.node
-};
+  children: PropTypes.node,
+}

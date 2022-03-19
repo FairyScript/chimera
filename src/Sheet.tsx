@@ -3,14 +3,13 @@ import * as React from 'react'
 import { animated, useSpring, SpringConfig } from '@react-spring/web'
 import { useFocusElement } from './Hooks/use-focus-trap'
 import { Portal } from './Portal'
-import PropTypes from 'prop-types'
 import { RemoveScroll } from 'react-remove-scroll'
 import { useTheme } from './Theme/Providers'
 import { Theme } from './Theme'
 import { useMeasure, Bounds } from './Hooks/use-measure'
 import { usePrevious } from './Hooks/previous'
 import { useHideBody } from './Hooks/hide-body'
-import { useGestureResponder, StateType } from '@lib/react-gesture-responder'
+import { useGestureResponder, StateType } from './Lib/react-gesture-responder'
 
 export const RequestCloseContext = React.createContext(() => {})
 

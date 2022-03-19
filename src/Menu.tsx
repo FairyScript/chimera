@@ -1,12 +1,10 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
 import * as React from "react";
 import { Text } from "./Text";
 import PropTypes from "prop-types";
 import { RequestCloseContext } from "./Sheet";
 import { useTheme } from "./Theme/Providers";
 import { noOp } from "./misc/noop";
-import { useTouchable, OnPressFunction } from "touchable-hook";
+import { useTouchable, OnPressFunction } from "./Hooks/touchable-hook";
 import cx from "classnames";
 import { safeBind } from "./Hooks/compose-bind";
 
@@ -140,11 +138,6 @@ export const MenuList: React.FunctionComponent<MenuListProps> = ({
   );
 };
 
-MenuList.propTypes = {
-  children: PropTypes.node,
-  focusableChildren: PropTypes.arrayOf(PropTypes.elementType)
-};
-
 interface MenuItemProps extends React.HTMLAttributes<Element> {
   /** Called when the menu item is selected. Generally use this instead of onClick. */
   onPress?: OnPressFunction;
@@ -276,18 +269,6 @@ export const MenuItem: React.FunctionComponent<MenuItemProps> = ({
       )}
     </Component>
   );
-};
-
-MenuItem.propTypes = {
-  onSelect: PropTypes.func,
-  component: PropTypes.string,
-  disabled: PropTypes.bool,
-  children: PropTypes.node,
-  contentBefore: PropTypes.node,
-  contentAfter: PropTypes.node,
-  onPress: PropTypes.func,
-  className: PropTypes.string,
-  role: PropTypes.string
 };
 
 type MenuDividerProps = React.HTMLAttributes<HTMLDivElement>;

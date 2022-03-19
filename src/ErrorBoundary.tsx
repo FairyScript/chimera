@@ -1,8 +1,6 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
-import * as React from "react";
 import { Alert } from "./Alert";
 import PropTypes from "prop-types";
+import { Component } from "react";
 
 export interface ErrorBoundaryProps {
   /** The title of the error message. */
@@ -17,7 +15,7 @@ interface ErrorBoundaryState {
   error: Error | null;
 }
 
-export class ErrorBoundary extends React.Component<
+export class ErrorBoundary extends Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
 > {

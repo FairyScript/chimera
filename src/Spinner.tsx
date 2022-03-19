@@ -76,7 +76,7 @@ export const Spinner: React.FunctionComponent<SpinnerProps> = ({
         className="Spinner__container"
         role="status"
         css={{
-          color: theme.colors.text,
+          color: theme.colors.text.default,
           textAlign: 'center',
           display: 'inline-block',
         }}

@@ -1,12 +1,10 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
 import * as React from "react";
 import { Text } from "./Text";
 import PropTypes from "prop-types";
 import { MenuLabel } from "./Menu";
 import { useTheme } from "./Theme/Providers";
 import { noOp } from "./misc/noop";
-import { OnPressFunction, useTouchable } from "touchable-hook";
+import { OnPressFunction, useTouchable } from "./Hooks/touchable-hook";
 import { safeBind } from "./Hooks/compose-bind";
 
 export interface ListProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -45,7 +43,7 @@ interface ListItemProps extends React.HTMLAttributes<any> {
   [key: string]: any; // back hack to permit things like to='/page'
 }
 
-export const ListItem: React.FunctionComponent<ListItemProps> = ({
+export const ListItem: React.FC<ListItemProps> = ({
   primary,
   secondary,
   contentBefore,
@@ -160,18 +158,6 @@ export const ListItem: React.FunctionComponent<ListItemProps> = ({
       </div>
     </Component>
   );
-};
-
-ListItem.propTypes = {
-  primary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  secondary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  contentBefore: PropTypes.node,
-  contentAfter: PropTypes.node,
-  wrap: PropTypes.bool,
-  children: PropTypes.node,
-  interactive: PropTypes.bool,
-  onPress: PropTypes.func,
-  component: PropTypes.elementType
 };
 
 interface ListSectionProps extends React.HTMLAttributes<HTMLDivElement> {
