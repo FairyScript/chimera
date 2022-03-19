@@ -7,7 +7,7 @@
 
 import * as React from 'react'
 import { isHoverEnabled } from './hover-enabled'
-import { useGestureResponder } from '../../../../react-gesture-responder'
+import { useGestureResponder } from '../../Lib/react-gesture-responder'
 
 /**
  * useTouchable

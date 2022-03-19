@@ -4,10 +4,10 @@ import {
   StateType,
   Callbacks,
   ResponderEvent
-} from "react-gesture-responder";
-import { animated, useSpring, SpringConfig } from "react-spring";
+} from "../react-gesture-responder";
+import { animated, useSpring, SpringConfig } from "@react-spring/web";
 import { useMeasure } from "./use-measure";
-import useScrollLock from "use-scroll-lock";
+import useScrollLock from "../use-scroll-lock";
 import { usePrevious } from "./use-previous";
 
 /**

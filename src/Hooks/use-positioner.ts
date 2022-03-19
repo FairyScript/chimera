@@ -1,20 +1,21 @@
-import Popper, { PopperOptions } from "popper.js";
+import Popper from 'popper.js'
+import { useState, useEffect } from 'react'
 
-import { useCallbackRef } from "./use-callback-ref";
+import { useCallbackRef } from './use-callback-ref'
 
 const defaultStyle = {
-  position: "absolute",
+  position: 'absolute',
   top: 0,
   left: 0,
   opacity: 0,
-  pointerEvents: "none"
-};
+  pointerEvents: 'none',
+}
 
 export interface PositionerOptions {
-  placement?: Popper.Placement;
-  positionFixed?: boolean;
-  eventsEnabled?: boolean;
-  modifiers?: Popper.Modifiers;
+  placement?: Popper.Placement
+  positionFixed?: boolean
+  eventsEnabled?: boolean
+  modifiers?: Popper.Modifiers
 }
 
 /**
@@ -22,33 +23,31 @@ export interface PositionerOptions {
  */
 
 export function usePositioner({
-  placement: defaultPlacement = "bottom",
+  placement: defaultPlacement = 'bottom',
   positionFixed = false,
   eventsEnabled = true,
-  modifiers = {}
+  modifiers = {},
 }: PositionerOptions = {}) {
-  const [target, attachTarget] = useCallbackRef();
-  const [popover, attachPopover] = useCallbackRef();
-  const [arrow, attachArrow] = useCallbackRef();
+  const [target, attachTarget] = useCallbackRef()
+  const [popover, attachPopover] = useCallbackRef()
+  const [arrow, attachArrow] = useCallbackRef()
 
   // positions
-  const [popperStyle, setPopperStyle] = React.useState(defaultStyle as any);
-  const [arrowStyle, setArrowStyle] = React.useState({});
-  const [placement, setPlacement] = React.useState<Popper.Placement | null>(
-    null
-  );
+  const [popperStyle, setPopperStyle] = useState(defaultStyle as any)
+  const [arrowStyle, setArrowStyle] = useState({})
+  const [placement, setPlacement] = useState<Popper.Placement | null>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!target || !popover) {
-      return;
+      return
     }
 
     function updatePopperState(data: Popper.Data) {
-      const { styles, arrowStyles, placement: place } = data;
-      setPopperStyle(styles);
-      setArrowStyle(arrowStyles);
-      setPlacement(place);
-      return data;
+      const { styles, arrowStyles, placement: place } = data
+      setPopperStyle(styles)
+      setArrowStyle(arrowStyles)
+      setPlacement(place)
+      return data
     }
 
     //  @ts-ignore
@@ -61,39 +60,39 @@ export function usePositioner({
         arrow: {
           ...(modifiers && modifiers.arrow),
           enabled: true,
-          element: arrow
+          element: arrow,
         },
         applyStyle: { enabled: false },
         updateStateModifier: {
           enabled: true,
           order: 900,
-          fn: updatePopperState
-        }
-      }
-    });
+          fn: updatePopperState,
+        },
+      },
+    })
 
     return () => {
       if (pop) {
-        pop.destroy();
+        pop.destroy()
       }
-    };
-  }, [target, popover, defaultPlacement, eventsEnabled, positionFixed, arrow]);
+    }
+  }, [target, popover, defaultPlacement, eventsEnabled, positionFixed, arrow])
 
   return {
     target: {
       ref: attachTarget,
-      node: target
+      node: target,
     },
     popover: {
       node: popover,
       style: popperStyle as any,
       ref: attachPopover,
-      placement
+      placement,
     },
     arrow: {
       node: arrow,
       style: arrowStyle,
-      ref: attachArrow
-    }
-  };
+      ref: attachArrow,
+    },
+  }
 }

@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useGestureResponder, StateType } from "react-gesture-responder";
+import { useGestureResponder, StateType } from "../react-gesture-responder";
 import { StackContext } from "./StackContext";
-import { useSprings } from "react-spring";
+import { useSprings } from "@react-spring/web";
 import { useMeasure } from "./use-measure";
-import useScrollLock from "use-scroll-lock";
+import useScrollLock from "../use-scroll-lock";
 
 /**
  * Get position of stack items

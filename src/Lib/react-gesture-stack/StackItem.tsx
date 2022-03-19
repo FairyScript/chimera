@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StackContext } from "./StackContext";
-import { animated } from "react-spring";
+import { animated } from "@react-spring/web";
 
 export interface StackItemProps extends React.HTMLAttributes<HTMLDivElement> {
   generateShadow?: (x: number) => string;

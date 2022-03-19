@@ -33,7 +33,3 @@ export const IconActivity: React.FunctionComponent<IconProps> = ({
   );
 };
 
-IconActivity.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-};

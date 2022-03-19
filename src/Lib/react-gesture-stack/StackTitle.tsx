@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StackContext } from "./StackContext";
-import { animated } from "react-spring";
+import { animated } from "@react-spring/web";
 import { IconChevronLeft } from "./ChevronLeft";
 
 export interface StackTitleProps {

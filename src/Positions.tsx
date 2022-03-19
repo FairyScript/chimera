@@ -8,7 +8,6 @@ import {
 } from 'react-popper'
 import { Portal } from './Portal'
 import { useTransition } from '@react-spring/web'
-import PropTypes from 'prop-types'
 
 export type Placements =
   | 'auto-start'

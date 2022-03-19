@@ -34,7 +34,3 @@ export const IconAirplay: React.FunctionComponent<IconProps> = ({
   );
 };
 
-IconAirplay.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-};

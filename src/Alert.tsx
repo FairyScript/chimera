@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
 import * as React from "react";
 import ReachAlert from "@reach/alert";
 import { Text } from "./Text";
@@ -180,20 +178,3 @@ export const Alert: React.FunctionComponent<AlertProps> = ({
 };
 
 Alert.displayName = "Alert";
-
-Alert.propTypes = {
-  onRequestClose: PropTypes.func,
-  subtitle: PropTypes.string,
-  title: PropTypes.string,
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  children: PropTypes.node,
-  intent: PropTypes.oneOf([
-    "info",
-    "success",
-    "warning",
-    "danger",
-    "question"
-  ] as AlertIntentions[]),
-  elevation: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
-  component: PropTypes.elementType
-};

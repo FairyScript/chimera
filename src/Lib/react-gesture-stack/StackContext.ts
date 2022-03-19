@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SpringValue } from "react-spring";
+import { SpringValue } from "@react-spring/web";
 
 interface StackContextType {
   index: number;

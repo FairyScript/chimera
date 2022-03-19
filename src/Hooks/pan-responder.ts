@@ -1,1 +1,1 @@
-export * from "react-gesture-responder";
+export * from "../Lib/react-gesture-responder";

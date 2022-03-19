@@ -34,8 +34,3 @@ export const IconAlertCircle: React.FunctionComponent<IconProps> = ({
     </svg>
   );
 };
-
-IconAlertCircle.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-};
