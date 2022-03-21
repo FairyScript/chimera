@@ -1,9 +1,9 @@
-import * as React from 'react'
 import { animated, useTransition } from '@react-spring/web'
 import { Portal } from './Portal'
 import { useHideBody } from './Hooks/hide-body'
 import PropTypes from 'prop-types'
 import { useTheme } from './Theme/Providers'
+import { forwardRef } from 'react'
 
 export interface OverlayProps {
   /** Whether the overlay is open */
@@ -14,7 +14,7 @@ export interface OverlayProps {
   onRequestClose: () => void
 }
 
-export const Overlay = React.forwardRef(
+export const Overlay = forwardRef(
   (
     { isOpen, onRequestClose, children }: OverlayProps,
     ref: React.Ref<HTMLDivElement>
