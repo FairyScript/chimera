@@ -1,6 +1,5 @@
 {
-  "name": "chimera-ui",
-  "private": true,
+  "name": "mex-ui",
   "version": "0.0.8",
   "scripts": {
     "dev": "vite",
