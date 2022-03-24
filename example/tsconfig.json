@@ -14,16 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "stripInternal": true,
     "jsx": "react-jsx",
     "types": ["vite/client", "@emotion/react/types/css-prop"]
   },
-  "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "src/**/__tests__/*",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["example","src"]
 }
